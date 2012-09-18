@@ -1,8 +1,12 @@
+.*
 *.in
 *.out
 *.rtf
 *.txt
 *.pdf
-
 *.pyc
 *.class
+*.zip
+*.gz
+*.tar
+*.tar.gz
