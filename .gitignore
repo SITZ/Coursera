@@ -6,7 +6,8 @@
 *.pdf
 *.pyc
 *.class
-*.zip
 *.gz
 *.tar
 *.tar.gz
+*.zip
+*target*
