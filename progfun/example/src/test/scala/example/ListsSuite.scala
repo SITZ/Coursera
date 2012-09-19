@@ -1,7 +1,7 @@
 package example
 
 import org.scalatest.FunSuite
-
+import java.util.NoSuchElementException
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
@@ -47,7 +47,7 @@ class ListsSuite extends FunSuite {
    * This allows tests to be written in a more readable manner:
    */
   test("one plus one is three?") {
-    assert(1 + 1 == 3) // This assertion fails! Go ahead and fix it.
+    assert(1 + 1 == 2) // This assertion fails! Go ahead and fix it.
   }
 
 
@@ -72,12 +72,12 @@ class ListsSuite extends FunSuite {
    * We recommend to always use the `===` equality operator when writing tests.
    */
   test("details why one plus one is not three") {
-    assert(1 + 1 === 3) // Fix me, please!
+    assert(1 + 1 === 2) // Fix me, please!
   }
 
 
   /**
-   * In order to test the exceptional behavior of a methods, ScalaTest offers
+   * In order to test the exceptional behavior of a method, ScalaTest offers
    * the `intercept` operation.
    *
    * In the following example, we test the fact that the method `intNotZero`
@@ -114,11 +114,73 @@ class ListsSuite extends FunSuite {
    * however it is recommended to write an individual `test` statement for
    * every tested aspect of a method.
    */
-  test("sum of a few numbers") {
-    assert(sum(List(1,2,0)) === 3)
+  
+  // Tests for sum() 
+  test("sum of a few positive numbers") {
+    assert(sum(List(1, 2, 0)) === 3)
   }
   
+  test("sum of positive & negative numbers") {
+    assert(sum(List(4, 1, -2)) === 3)
+  }
+  
+  test("sum of negative & positive numbers") {
+    assert(sum(List(2, 1, -4)) === -1)
+  }
+  
+  test("sum of a few negative numbers") {
+    assert(sum(List(-1, -15, -9)) === -25)
+  }
+  
+  test("sum of list with one positive number") {
+    assert(sum(List(5)) === 5)
+  }
+  
+  test("sum of list with one negative number") {
+    assert(sum(List(-5)) === -5)
+  }
+  
+  test("sum of list equals zero") {
+    assert(sum(List(1, 2, 3, 0, -3, -2, -1)) === 0)
+  }
+  
+  test("sum of empty list") {
+    assert(sum(List()) === 0)
+  }
+  
+  // Tests for max()
   test("max of a few numbers") {
     assert(max(List(3, 7, 2)) === 7)
+  }
+  
+  test("max of positive & negative numbers") {
+    assert(max(List(4, 1, -2)) === 4)
+  }
+  
+  test("max of negative & positive numbers") {
+    assert(max(List(2, 1, -4)) === 2)
+  }
+  
+  test("max of a few negative numbers") {
+    assert(max(List(-1, -15, -9)) === -1)
+  }
+  
+  test("max of list with one positive number") {
+    assert(max(List(5)) === 5)
+  }
+  
+  test("max of list with one negative number") {
+    assert(max(List(-5)) === -5)
+  }
+  
+  test("max of list equals zero") {
+    assert(max(List(1, 2, 3, 0, -3, -2, -1)) === 3)
+  }
+  
+  test("max of empty list") {
+    val thrown = intercept[NoSuchElementException] {
+    	max(List())
+    }
+    assert(thrown.getMessage() === "Can't find max of an empty list!")
   }
 }
