@@ -1,4 +1,4 @@
-# Nothing by default
+# No hidden files by default
 .*
 
 # No testing I/O files
