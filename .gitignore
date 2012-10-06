@@ -1,13 +1,32 @@
+# Nothing by default
 .*
+
+# No testing I/O files
 *.in
 *.out
+
+# No Documentation Shit
 *.rtf
 *.txt
 *.pdf
+
+# No compiled classes / Object Code
 *.pyc
 *.class
+*target*
+
+# No Compressed Archives
 *.gz
 *.tar
 *.tar.gz
 *.zip
-*target*
+
+# No data-files in git
+#*data/
+
+# No Lecture Audio/Videos 
+*.mp3
+*.mp4
+
+# No Subtitles either
+*.srt
