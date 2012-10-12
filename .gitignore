@@ -30,3 +30,12 @@
 
 # No Subtitles either
 *.srt
+
+# No Mac Shit
+__MACOSX/
+.DS_Store
+
+# No *NIX Shit
+
+# No Windows Shit
+*.exe
